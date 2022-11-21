@@ -1,0 +1,14 @@
+:root{
+  --background-color-day: rgb(2, 122, 131);
+  --background-color-night: rgb(1, 76, 97);
+
+  --backgroundMain-color-day: rgb(2, 154, 165);
+  --backgroundMain-color-night: rgb(2, 137, 174);
+
+  --color-text-day: rgb(255, 255, 255);
+  --color-text-night: rgb(247, 249, 247);
+
+  --background-color:var(--background-color-day);
+  --color:var(--color-text-day);
+  --backgroundMain-color: var(--backgroundMain-color-day)
+}

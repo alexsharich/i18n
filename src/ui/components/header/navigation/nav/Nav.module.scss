@@ -1,0 +1,21 @@
+.nav {
+  width: 400px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;  
+  margin-right: 50px;
+  padding: 0;
+
+
+  a {
+    color: rgb(255, 248, 248);
+    text-decoration: none;
+    transition: color .5s linear;
+    &:hover {
+    color:goldenrod
+    }
+  }
+}

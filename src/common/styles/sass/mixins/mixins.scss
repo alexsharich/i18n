@@ -1,0 +1,6 @@
+@mixin text( $fontSize ,$color) {
+  font-size: $fontSize;
+  color:$color
+}
+
+// @include text(... , ...)
