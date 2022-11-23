@@ -2,7 +2,15 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import s from './Nav.module.scss'
 
-export const Nav = () => {
+type NavPropsType = {
+  setModalForLogin: (value: boolean) => void
+  setModalForRegistration: (value: boolean) => void
+}
+
+export const Nav = ({
+  setModalForLogin,
+  setModalForRegistration,
+}: NavPropsType) => {
   const { t } = useTranslation()
 
   return (
@@ -11,10 +19,15 @@ export const Nav = () => {
         <a href="#">{t('main')}</a>
       </li>
       <li>
-        <a href="#"> {t('registration')}</a>
+        <a href="#" onClick={() => setModalForRegistration(true)}>
+          {' '}
+          {t('registration')}
+        </a>
       </li>
       <li>
-        <a href="#">{t('login')}</a>
+        <a href="#" onClick={() => setModalForLogin(true)}>
+          {t('login')}
+        </a>
       </li>
     </ul>
   )
