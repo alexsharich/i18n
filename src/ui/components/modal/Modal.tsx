@@ -1,17 +1,19 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import s from './Modal.module.scss'
 
 type ModalPropsType = {
   active: boolean
-  setActive: (value: boolean) => void
+  setIsActive: () => void
   children: React.ReactNode
 }
 
-export const Modal = ({ active, setActive, children }: ModalPropsType) => {
+export const Modal = ({ active, setIsActive, children }: ModalPropsType) => {
+  const dispatch = useDispatch()
   return (
     <div
       className={active ? `${s.modal} ${s.active}` : `${s.modal}`}
-      onClick={() => setActive(false)}
+      onClick={() => setIsActive()}
     >
       <div
         className={

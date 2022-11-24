@@ -1,4 +1,11 @@
+import { Console } from 'console'
 import React, { useState } from 'react'
+import {
+  setRegistrationModalActiveThunk,
+  setIsModalActiveThunk,
+  setLoginModalThunk,
+} from '../../../bll/ModalReducer'
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
 import { Login } from '../login/Login'
 import { Modal } from '../modal/Modal'
 import { Registration } from '../registration/Registration'
@@ -8,22 +15,26 @@ import { Nav } from './navigation/nav/Nav'
 import { ThemeButton } from './themeButton/ThemeButton'
 
 export const Header = () => {
-  const [modalActive, setModalActive] = useState(false)
-  const [registerModal, setRegisterModal] = useState(false)
-  const [loginModal, setLoginModal] = useState(false)
+  const dispatch = useAppDispatch()
 
-  const setModalForLogin = (value: boolean) => {
-    setLoginModal(value)
-    setModalActive(value)
+  const isActive = useAppSelector((state) => state.modal.isModalActive)
+  const loginModalIsActive = useAppSelector(
+    (state) => state.modal.loginChildModal,
+  )
+  const registrationModalIsActive = useAppSelector(
+    (state) => state.modal.registrationChildModal,
+  )
+  const setIsActive = () => {
+    dispatch(setIsModalActiveThunk(false))
+    // dispatch(setIsModalActiveThunkAction(false))
   }
-  const setModalForRegistration = (value: boolean) => {
-    setRegisterModal(value)
-    setModalActive(value)
+  const openLoginModal = () => {
+    dispatch(setLoginModalThunk(true))
+    // dispatch(setLoginModalThunkAction(true))
   }
-  const setModal = (value: boolean) => {
-    setModalActive(value)
-    setRegisterModal(value)
-    setModalActive(value)
+  const openRegistrationModal = () => {
+    dispatch(setRegistrationModalActiveThunk(true))
+    // dispatch(setRegistrationModalThunkAction(true))
   }
 
   return (
@@ -31,11 +42,17 @@ export const Header = () => {
       <ThemeButton />
       <LangButton />
       <Nav
-        setModalForRegistration={setModalForRegistration}
-        setModalForLogin={setModalForLogin}
+        openLoginModal={openLoginModal}
+        openRegistrationModal={openRegistrationModal}
       />
-      <Modal active={modalActive} setActive={setModal}>
-        {registerModal ? <Registration /> : '' || loginModal ? <Login /> : ''}
+      <Modal active={isActive} setIsActive={setIsActive}>
+        {registrationModalIsActive ? (
+          <Registration />
+        ) : '' || loginModalIsActive ? (
+          <Login />
+        ) : (
+          ''
+        )}
       </Modal>
     </div>
   )

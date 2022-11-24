@@ -3,15 +3,16 @@ import { useTranslation } from 'react-i18next'
 import s from './Nav.module.scss'
 
 type NavPropsType = {
-  setModalForLogin: (value: boolean) => void
-  setModalForRegistration: (value: boolean) => void
+  openLoginModal: () => void
+  openRegistrationModal: () => void
 }
 
 export const Nav = ({
-  setModalForLogin,
-  setModalForRegistration,
+  openLoginModal,
+  openRegistrationModal,
 }: NavPropsType) => {
   const { t } = useTranslation()
+  //const dispatch = useDispatch()
 
   return (
     <ul className={s.nav}>
@@ -19,13 +20,13 @@ export const Nav = ({
         <a href="#">{t('main')}</a>
       </li>
       <li>
-        <a href="#" onClick={() => setModalForRegistration(true)}>
+        <a href="#" onClick={() => openRegistrationModal()}>
           {' '}
           {t('registration')}
         </a>
       </li>
       <li>
-        <a href="#" onClick={() => setModalForLogin(true)}>
+        <a href="#" onClick={() => openLoginModal()}>
           {t('login')}
         </a>
       </li>
