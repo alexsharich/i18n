@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import s from './Nav.module.scss'
 
 type NavPropsType = {
@@ -17,7 +18,10 @@ export const Nav = ({
   return (
     <ul className={s.nav}>
       <li>
-        <a href="#">{t('main')}</a>
+        <Link to="/main">{t('main')}</Link>
+      </li>
+      <li>
+        <Link to="/profile">{t('profile')}</Link>
       </li>
       <li>
         <a href="#" onClick={() => openRegistrationModal()}>
