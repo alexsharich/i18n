@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import thunk from 'redux-thunk'
+import { loaderReducer } from './LoaderReducer'
 import { modalReducer } from './ModalReducer'
 
 /* const rootReducer = combineReducers({
@@ -8,7 +9,8 @@ import { modalReducer } from './ModalReducer'
 }) */
 export const store = configureStore({
   reducer: {
-    modal:modalReducer
+    modal:modalReducer,
+    loader:loaderReducer
   }
 })
 //export const store = createStore(rootReducer,applyMiddleware(thunk))

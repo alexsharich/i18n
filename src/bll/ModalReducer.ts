@@ -1,28 +1,25 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import React from 'react'
+import { setLoaderThunk } from './LoaderReducer'
 
 let initialState = {
-  loginChildModal:false,
-  registrationChildModal:false,
-  isModalActive:false
+  isLoginModalActive:false,
+  isRegistrationModalActive:false,
+  isModalActive:false,
+  isSignInModalActive:false
 }
-type InitialStateType = {
-  loginChildModal:boolean
-  registrationChildModal:boolean,
-  isModalActive:boolean
-}
-type ActionType = any
 
 export const setIsModalActiveThunk = createAsyncThunk('setIsModalActivethunk',(value:boolean,thunkAPI)=>{
-    thunkAPI.dispatch(SetIsModalActive(value))
-    thunkAPI.dispatch(SetRegistrationModalAction(value))
-    thunkAPI.dispatch(SetLoginModalAction(value))
+    thunkAPI.dispatch(setIsLoginModalThunk(value))
+    thunkAPI.dispatch(setRegistrationModalThunk(value))
+    thunkAPI.dispatch(setLoaderThunk(value))
 })
-export const setLoginModalThunk = createAsyncThunk('setLoginModalActivethunk',(value:boolean,thunkAPI)=>{
-  thunkAPI. dispatch(SetIsModalActive(value))
-  thunkAPI.dispatch(SetLoginModalAction(value))
+export const setIsLoginModalThunk = createAsyncThunk('setLoginModalActivethunk',(value:boolean,thunkAPI)=>{
+  thunkAPI.dispatch(SetRegistrationModalAction(false))
+  thunkAPI.dispatch(SetIsModalActive(value))
+  thunkAPI.dispatch(SetLoginModalAction(value))  
 })
-export const setRegistrationModalActiveThunk = createAsyncThunk('setRegistrationModalActivethunk',(value:boolean,thunkAPI)=>{
+export const setRegistrationModalThunk = createAsyncThunk('setRegistrationModalActivethunk',(value:boolean,thunkAPI)=>{
+  thunkAPI.dispatch(SetLoginModalAction(false))
   thunkAPI.dispatch(SetIsModalActive(value))
   thunkAPI.dispatch(SetRegistrationModalAction(value))
 })
@@ -32,10 +29,10 @@ name:'modal',
 initialState,
 reducers:{
   SetLoginModalAction:(state,action:PayloadAction<boolean>)=>{
-state.loginChildModal = action.payload
+    state.isLoginModalActive = action.payload
   },
   SetRegistrationModalAction:(state,action:PayloadAction<boolean>)=>{
-    state.registrationChildModal=action.payload
+    state.isRegistrationModalActive=action.payload
   },
   SetIsModalActive:(state,action:PayloadAction<boolean>)=>{
     state.isModalActive=action.payload
@@ -45,7 +42,7 @@ state.loginChildModal = action.payload
 export const modalReducer = modalSlice.reducer
 export const {SetLoginModalAction,SetRegistrationModalAction,SetIsModalActive}  = modalSlice.actions
 export const modalThunks = {
-  setIsModalActiveThunk,setLoginModalThunk,setRegistrationModalActiveThunk
+  setIsModalActiveThunk,setIsLoginModalThunk,setRegistrationModalThunk
 }
 /* export const modalReducer = (state:InitialStateType = initialState,action:ActionType):InitialStateType=>{
   switch(action.type){

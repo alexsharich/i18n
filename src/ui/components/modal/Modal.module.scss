@@ -11,14 +11,17 @@ justify-content: center;
 opacity: 0;
 pointer-events: none;
 transition: 0.5s;
-  .modalContent {
-padding: 20px;
+.modalContent {
+//padding: 20px;
 border-radius: 12px;
 background-color: white;
-width: 50vw;
+//width: 300px;
 color: black;
 transform:scale(0.5);
 transition: 0.4s all;
+display: flex;
+justify-content: center;
+align-items: center;
   }
 }
 

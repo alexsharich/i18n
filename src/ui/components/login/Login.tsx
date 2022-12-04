@@ -1,8 +1,11 @@
 import { Form, Formik } from 'formik'
 import React from 'react'
+import { setRegistrationModalThunk } from '../../../bll/ModalReducer'
+import { useAppDispatch } from '../../../hooks/hooks'
 import s from './Login.module.scss'
 
 export const Login = () => {
+  const dispatch = useAppDispatch()
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
@@ -27,6 +30,7 @@ export const Login = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
+            placeholder="email"
           />
           {errors.email && touched.email && errors.email}
           <input
@@ -35,10 +39,19 @@ export const Login = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.password}
+            placeholder="password"
           />
           <button type="submit" disabled={isSubmitting}>
             Submit
           </button>
+          <a
+            href="#"
+            onClick={() => {
+              dispatch(setRegistrationModalThunk(true))
+            }}
+          >
+            REGISTRATION
+          </a>
         </form>
       )}
     </Formik>

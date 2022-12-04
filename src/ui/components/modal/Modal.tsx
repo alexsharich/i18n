@@ -1,5 +1,6 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useAppSelector } from '../../../hooks/hooks'
+import { Loader } from '../loader/Loader'
 import s from './Modal.module.scss'
 
 type ModalPropsType = {
@@ -9,12 +10,14 @@ type ModalPropsType = {
 }
 
 export const Modal = ({ active, setIsActive, children }: ModalPropsType) => {
-  const dispatch = useDispatch()
+  const isLoaderStatus = useAppSelector((state) => state.loader.isLoader)
+
   return (
     <div
       className={active ? `${s.modal} ${s.active}` : `${s.modal}`}
       onClick={() => setIsActive()}
     >
+      {isLoaderStatus ? <Loader /> : ''}
       <div
         className={
           active ? `${s.modalContent} ${s.active}` : `${s.modalContent}`

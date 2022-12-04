@@ -1,18 +1,20 @@
 import { modalReducer, SetIsModalActive, SetLoginModalAction, SetRegistrationModalAction } from "./ModalReducer"
 
 type StartStateType = {
-  loginChildModal:boolean
-  registrationChildModal:boolean
+  isLoginModalActive:boolean
+  isRegistrationModalActive:boolean
   isModalActive:boolean
+  isSignInModalActive:boolean
 }
 
 let startState:StartStateType
 
 beforeEach(()=>{
   startState={
-    loginChildModal:false,
-    registrationChildModal:false,
-    isModalActive:false
+    isLoginModalActive:false,
+    isRegistrationModalActive:false,
+    isModalActive:false,
+    isSignInModalActive:false
   }
 })
 describe('check modalReducer SetIsModalActive branch',()=>{
@@ -28,20 +30,20 @@ describe('check modalReducer SetIsModalActive branch',()=>{
 describe('check modalReducer SetLoginModalAction branch',()=>{
   it('loginChildModal with value true',()=>{
     const endState = modalReducer(startState,SetLoginModalAction(true))
-    expect(endState.loginChildModal).toBe(true)
+    expect(endState.isLoginModalActive).toBe(true)
     })
   it('loginChildModal  with value false',()=>{
       const endState = modalReducer(startState,SetLoginModalAction(false))
-      expect(endState.loginChildModal).toBe(false)
+      expect(endState.isLoginModalActive).toBe(false)
     }) 
 })
 describe('check modalReducer SetRegistrationModalAction branch',()=>{
   test('registrationChildModal with value true',()=>{
     const endState = modalReducer(startState,SetRegistrationModalAction(true))
-    expect(endState.registrationChildModal).toBe(true)
+    expect(endState.isRegistrationModalActive).toBe(true)
     })
   test('registrationChildModal  with value false',()=>{
       const endState = modalReducer(startState,SetRegistrationModalAction(false))
-      expect(endState.registrationChildModal).toBe(false)
+      expect(endState.isRegistrationModalActive).toBe(false)
     }) 
 })
