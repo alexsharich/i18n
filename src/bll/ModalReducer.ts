@@ -14,28 +14,28 @@ export const setIsModalActiveThunk = createAsyncThunk('setIsModalActivethunk',(v
     thunkAPI.dispatch(setLoaderThunk(value))
 })
 export const setIsLoginModalThunk = createAsyncThunk('setLoginModalActivethunk',(value:boolean,thunkAPI)=>{
-  thunkAPI.dispatch(SetRegistrationModalAction(false))
-  thunkAPI.dispatch(SetIsModalActive(value))
-  thunkAPI.dispatch(SetLoginModalAction(value))  
+  thunkAPI.dispatch(SetRegistrationModalAction({value:false}))
+  thunkAPI.dispatch(SetIsModalActive({value}))
+  thunkAPI.dispatch(SetLoginModalAction({value}))  
 })
 export const setRegistrationModalThunk = createAsyncThunk('setRegistrationModalActivethunk',(value:boolean,thunkAPI)=>{
-  thunkAPI.dispatch(SetLoginModalAction(false))
-  thunkAPI.dispatch(SetIsModalActive(value))
-  thunkAPI.dispatch(SetRegistrationModalAction(value))
+  thunkAPI.dispatch(SetLoginModalAction({value:false}))
+  thunkAPI.dispatch(SetIsModalActive({value}))
+  thunkAPI.dispatch(SetRegistrationModalAction({value}))
 })
 
 export const modalSlice = createSlice({
 name:'modal',
 initialState,
 reducers:{
-  SetLoginModalAction:(state,action:PayloadAction<boolean>)=>{
-    state.isLoginModalActive = action.payload
+  SetLoginModalAction:(state,action:PayloadAction<{value:boolean}>)=>{
+    state.isLoginModalActive = action.payload.value
   },
-  SetRegistrationModalAction:(state,action:PayloadAction<boolean>)=>{
-    state.isRegistrationModalActive=action.payload
+  SetRegistrationModalAction:(state,action:PayloadAction<{value:boolean}>)=>{
+    state.isRegistrationModalActive=action.payload.value
   },
-  SetIsModalActive:(state,action:PayloadAction<boolean>)=>{
-    state.isModalActive=action.payload
+  SetIsModalActive:(state,action:PayloadAction<{value:boolean}>)=>{
+    state.isModalActive=action.payload.value
   }
 }
 })

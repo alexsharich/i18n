@@ -1,5 +1,6 @@
 import { Form, Formik } from 'formik'
 import React from 'react'
+import { authLoginThunk } from '../../../bll/auth/AuthReduces'
 import { setRegistrationModalThunk } from '../../../bll/ModalReducer'
 import { useAppDispatch } from '../../../hooks/hooks'
 import s from './Login.module.scss'
@@ -10,7 +11,7 @@ export const Login = () => {
     <Formik
       initialValues={{ email: '', password: '' }}
       onSubmit={(values) => {
-        alert(JSON.stringify(values))
+        dispatch(authLoginThunk(values))
       }}
     >
       {({

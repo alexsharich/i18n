@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import {applyMiddleware, combineReducers, createStore} from 'redux'
 import thunk from 'redux-thunk'
+import { authReducer } from './auth/AuthReduces'
 import { loaderReducer } from './LoaderReducer'
 import { modalReducer } from './ModalReducer'
 
@@ -10,7 +11,8 @@ import { modalReducer } from './ModalReducer'
 export const store = configureStore({
   reducer: {
     modal:modalReducer,
-    loader:loaderReducer
+    loader:loaderReducer,
+    auth:authReducer
   }
 })
 //export const store = createStore(rootReducer,applyMiddleware(thunk))

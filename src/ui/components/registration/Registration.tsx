@@ -46,7 +46,7 @@ export const Registration = () => {
             name="fullName"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.password}
+            value={values.fullName}
             placeholder="fullName"
           />
 
