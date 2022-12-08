@@ -22,12 +22,18 @@ export const Header = () => {
   const openSignInModal = () => {
     dispatch(setIsLoginModalThunk(true))
   }
+  const openSignOutModal = () => {
+    dispatch(() => {})
+  }
 
   return (
     <div className={s.header}>
       <ThemeButton />
       <LangButton />
-      <Nav openSignInModal={openSignInModal} />
+      <Nav
+        openSignInModal={openSignInModal}
+        openSignOutModal={openSignOutModal}
+      />
       <Modal active={isActive} setIsActive={setIsActive}>
         <SignIn />
       </Modal>

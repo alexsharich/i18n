@@ -3,5 +3,6 @@
   "profile":"Profile",
   "registration":"Registration",
   "login":"Login",
-  "signIn":"Sign In"
+  "signIn":"Sign In",
+  "signOut":"Sign Out"
 }

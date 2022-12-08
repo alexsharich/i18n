@@ -7,6 +7,8 @@ import { Main } from './ui/components/main/Main'
 import { Modal } from './ui/components/modal/Modal'
 
 function App() {
+  useEffect(() => {})
+
   return (
     <div className="App">
       <Header />

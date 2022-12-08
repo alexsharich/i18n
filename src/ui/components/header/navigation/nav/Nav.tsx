@@ -7,9 +7,10 @@ import s from './Nav.module.scss'
 
 type NavPropsType = {
   openSignInModal: () => void
+  openSignOutModal: () => void
 }
 
-export const Nav = ({ openSignInModal }: NavPropsType) => {
+export const Nav = ({ openSignInModal, openSignOutModal }: NavPropsType) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
@@ -27,8 +28,12 @@ export const Nav = ({ openSignInModal }: NavPropsType) => {
             {t('signIn')}
           </a>
         </li>
+        <li>
+          <a href="#" onClick={() => openSignOutModal()}>
+            {t('signOut')}
+          </a>
+        </li>
       </ul>
-      <button onClick={() => dispatch(setLoaderThunk(true))}>loader</button>
     </div>
   )
 }

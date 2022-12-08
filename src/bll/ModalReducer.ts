@@ -18,6 +18,9 @@ export const setIsLoginModalThunk = createAsyncThunk('setLoginModalActivethunk',
   thunkAPI.dispatch(SetIsModalActive({value}))
   thunkAPI.dispatch(SetLoginModalAction({value}))  
 })
+export const setIsLoginOutModalThunk = createAsyncThunk('setIsLoginOutModalThunk',()=>{
+  //window.localStorage.removeItem('token')
+})
 export const setRegistrationModalThunk = createAsyncThunk('setRegistrationModalActivethunk',(value:boolean,thunkAPI)=>{
   thunkAPI.dispatch(SetLoginModalAction({value:false}))
   thunkAPI.dispatch(SetIsModalActive({value}))

@@ -3,5 +3,6 @@
   "profile":"Профиль",
   "registration":"Регистрация",
   "login":"Логинизация",
-  "signIn":"Войти"
+  "signIn":"Войти",
+  "signOut":"Выйти"
 }
