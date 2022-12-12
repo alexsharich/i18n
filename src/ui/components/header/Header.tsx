@@ -2,6 +2,7 @@ import { Console } from 'console'
 import React, { useState } from 'react'
 import {
   setIsLoginModalThunk,
+  setIsLoginOutModalThunk,
   setIsModalActiveThunk,
 } from '../../../bll/ModalReducer'
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks'
@@ -23,7 +24,7 @@ export const Header = () => {
     dispatch(setIsLoginModalThunk(true))
   }
   const openSignOutModal = () => {
-    dispatch(() => {})
+    dispatch(setIsLoginOutModalThunk(true))
   }
 
   return (

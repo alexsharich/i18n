@@ -2,6 +2,7 @@ import { modalReducer, SetIsModalActive, SetLoginModalAction, SetRegistrationMod
 
 type StartStateType = {
   isLoginModalActive:boolean
+  isLoginOutModalActive:boolean
   isRegistrationModalActive:boolean
   isModalActive:boolean
   isSignInModalActive:boolean
@@ -12,6 +13,7 @@ let startState:StartStateType
 beforeEach(()=>{
   startState={
     isLoginModalActive:false,
+    isLoginOutModalActive:false,
     isRegistrationModalActive:false,
     isModalActive:false,
     isSignInModalActive:false

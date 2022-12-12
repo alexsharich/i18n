@@ -3,6 +3,7 @@ import { setLoaderThunk } from './LoaderReducer'
 
 let initialState = {
   isLoginModalActive:false,
+  isLoginOutModalActive:false,
   isRegistrationModalActive:false,
   isModalActive:false,
   isSignInModalActive:false
@@ -10,6 +11,7 @@ let initialState = {
 
 export const setIsModalActiveThunk = createAsyncThunk('setIsModalActivethunk',(value:boolean,thunkAPI)=>{
     thunkAPI.dispatch(setIsLoginModalThunk(value))
+    thunkAPI.dispatch(setIsLoginOutModalThunk(value))
     thunkAPI.dispatch(setRegistrationModalThunk(value))
     thunkAPI.dispatch(setLoaderThunk(value))
 })
@@ -18,8 +20,12 @@ export const setIsLoginModalThunk = createAsyncThunk('setLoginModalActivethunk',
   thunkAPI.dispatch(SetIsModalActive({value}))
   thunkAPI.dispatch(SetLoginModalAction({value}))  
 })
-export const setIsLoginOutModalThunk = createAsyncThunk('setIsLoginOutModalThunk',()=>{
+export const setIsLoginOutModalThunk = createAsyncThunk('setIsLoginOutModalThunk',(value:boolean,thunkAPI)=>{
   //window.localStorage.removeItem('token')
+  //thunkAPI.dispatch(SetRegistrationModalAction({value:false}))
+  thunkAPI.dispatch(SetIsModalActive({value}))
+  //thunkAPI.dispatch(SetLoginModalAction({value}))
+  thunkAPI.dispatch(SetLoginOutModalAction({value}))
 })
 export const setRegistrationModalThunk = createAsyncThunk('setRegistrationModalActivethunk',(value:boolean,thunkAPI)=>{
   thunkAPI.dispatch(SetLoginModalAction({value:false}))
@@ -39,11 +45,14 @@ reducers:{
   },
   SetIsModalActive:(state,action:PayloadAction<{value:boolean}>)=>{
     state.isModalActive=action.payload.value
+  },
+  SetLoginOutModalAction:(state,action:PayloadAction<{value:boolean}>)=>{
+    state.isLoginOutModalActive= action.payload.value
   }
 }
 })
 export const modalReducer = modalSlice.reducer
-export const {SetLoginModalAction,SetRegistrationModalAction,SetIsModalActive}  = modalSlice.actions
+export const {SetLoginModalAction,SetLoginOutModalAction,SetRegistrationModalAction,SetIsModalActive}  = modalSlice.actions
 export const modalThunks = {
   setIsModalActiveThunk,setIsLoginModalThunk,setRegistrationModalThunk
 }
