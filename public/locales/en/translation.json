@@ -3,6 +3,9 @@
   "profile":"Profile",
   "registration":"Registration",
   "login":"Login",
+  "submit":"Submit",
   "signIn":"Sign In",
-  "signOut":"Sign Out"
+  "signOut":"Sign Out",
+  "sure":"Are you sure ?",
+  "logiOut":"LoginOut"
 }

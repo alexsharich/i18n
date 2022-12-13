@@ -1,10 +1,12 @@
-import { Form, Formik } from 'formik'
+import { Formik } from 'formik'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { setIsLoginModalThunk } from '../../../bll/ModalReducer'
 import { useAppDispatch } from '../../../hooks/hooks'
 import s from './Registration.module.scss'
 
 export const Registration = () => {
+  const { t } = useTranslation()
   const dispatch = useAppDispatch()
   return (
     <Formik
@@ -23,7 +25,7 @@ export const Registration = () => {
         isSubmitting,
       }) => (
         <form onSubmit={handleSubmit} className={s.form}>
-          <h3>REGISTRATION</h3>
+          <h3>{t('registration')}</h3>
           <input
             type="email"
             name="email"
@@ -51,10 +53,10 @@ export const Registration = () => {
           />
 
           <button type="submit" disabled={isSubmitting}>
-            Submit
+            {t('submit')}
           </button>
           <a href="#" onClick={() => dispatch(setIsLoginModalThunk(true))}>
-            LOGIN
+            {t('login')}
           </a>
         </form>
       )}

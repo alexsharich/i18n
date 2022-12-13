@@ -8,12 +8,14 @@ const PATH = {
   NOT_FOUND: '/404',
   UNKNOWN_PATH: '*',
   PROFILE_PAGE: '/profile',
+  START: '/',
 }
 
 export const Routing = () => {
   return (
     <div>
       <Routes>
+        <Route path={PATH.START} element={<Navigate to="/main" />} />
         <Route path={PATH.MAIN} element={<h3>MAIN</h3>} />
         <Route path={PATH.PROFILE_PAGE} element={<Profile />} />
         <Route path={PATH.NOT_FOUND} element={<NotFound404 />} />

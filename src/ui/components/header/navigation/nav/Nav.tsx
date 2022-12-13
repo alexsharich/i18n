@@ -1,8 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { setLoaderThunk } from '../../../../../bll/LoaderReducer'
-import { useAppDispatch } from '../../../../../hooks/hooks'
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks'
 import s from './Nav.module.scss'
 
 type NavPropsType = {
@@ -12,6 +11,7 @@ type NavPropsType = {
 
 export const Nav = ({ openSignInModal, openSignOutModal }: NavPropsType) => {
   const { t } = useTranslation()
+  const initialized = useAppSelector((state) => state.auth.initialized)
   const dispatch = useAppDispatch()
 
   return (
@@ -23,16 +23,19 @@ export const Nav = ({ openSignInModal, openSignOutModal }: NavPropsType) => {
         <li>
           <Link to="/profile">{t('profile')}</Link>
         </li>
-        <li>
-          <a href="#" onClick={() => openSignInModal()}>
-            {t('signIn')}
-          </a>
-        </li>
-        <li>
-          <a href="#" onClick={() => openSignOutModal()}>
-            {t('signOut')}
-          </a>
-        </li>
+        {!initialized ? (
+          <li>
+            <a href="#" onClick={() => openSignInModal()}>
+              {t('signIn')}
+            </a>
+          </li>
+        ) : (
+          <li>
+            <a href="#" onClick={() => openSignOutModal()}>
+              {t('signOut')}
+            </a>
+          </li>
+        )}
       </ul>
     </div>
   )

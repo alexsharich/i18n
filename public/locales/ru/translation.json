@@ -3,6 +3,9 @@
   "profile":"Профиль",
   "registration":"Регистрация",
   "login":"Логинизация",
+  "submit":"Отправить",
   "signIn":"Войти",
-  "signOut":"Выйти"
+  "signOut":"Выйти",
+  "sure":"Вы уверены ?",
+  "loginOut":"Выйти"
 }

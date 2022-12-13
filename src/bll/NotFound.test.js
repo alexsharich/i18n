@@ -25,7 +25,6 @@ beforeEach(()=>{
   it('class .notFound404',()=>{
     const wrapper = component.find('.notFound404')
     expect(wrapper.length).toBe(1)
-    //console.log(component.debug())
     })
     
     it('h1',()=>{

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Console } from "console"
 import { i18nAPI, LoginParamsType } from "../../dal/i18nAPI"
 import { setLoaderThunk } from "../LoaderReducer"
 import { setIsModalActiveThunk } from "../ModalReducer"
@@ -42,9 +41,20 @@ reducers:{
   },
   SetProfile:(state,action:PayloadAction<any>)=>{
      return action.payload
+  },ClearProfile:(state,action:PayloadAction<{}>)=>{
+    return {
+      createdAt: "",
+  email: "",
+  fullName: "",
+  token: "",
+  updatedAt: "",
+  __v: 0,
+  _id :  "",
+  initialized:false
+    }
   }
 }
 })
 
 export const authReducer = authSlice.reducer
-export const {IsInitialized,SetProfile} = authSlice.actions
+export const {IsInitialized,SetProfile, ClearProfile} = authSlice.actions
