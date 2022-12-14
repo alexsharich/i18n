@@ -1,4 +1,4 @@
-import { modalReducer, SetIsModalActive, SetLoginModalAction, SetRegistrationModalAction } from "./ModalReducer"
+import { modalReducer, SetIsModalActive, SetLoginModalAction, SetLoginOutModalAction, SetRegistrationModalAction } from "./ModalReducer"
 
 type StartStateType = {
   isLoginModalActive:boolean
@@ -37,6 +37,16 @@ describe('check modalReducer SetLoginModalAction branch',()=>{
   it('loginChildModal  with value false',()=>{
       const endState = modalReducer(startState,SetLoginModalAction({value:false}))
       expect(endState.isLoginModalActive).toBe(false)
+    }) 
+})
+describe('check modalReducer SetLoginOutModalAction branch',()=>{
+  it('loginOutChildModal with value true',()=>{
+    const endState = modalReducer(startState,SetLoginOutModalAction({value:true}))
+    expect(endState.isLoginOutModalActive).toBe(true)
+    })
+  it('loginOutChildModal  with value false',()=>{
+      const endState = modalReducer(startState,SetLoginOutModalAction({value:false}))
+      expect(endState.isLoginOutModalActive).toBe(false)
     }) 
 })
 describe('check modalReducer SetRegistrationModalAction branch',()=>{
